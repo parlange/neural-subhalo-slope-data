@@ -40,7 +40,7 @@ parser.add_argument("--ming", type=float, default=1.5, help='Min gamma of traini
 parser.add_argument("--maxg", type=float, default=2.5, help='Max gamma of training set.') 
 parser.add_argument('--resume', action='store_true', help='Whether production is resumed from halfway; if true, load_dir needs to be given.')
 parser.add_argument('--data_type', default=None, help='Options include val, train, test.')
-parser.add_argument('--path', type=str, default='/n/holyscratch01/dvorkin_lab/gzhang/Storage/llr_data_images/', help='Path to save data.')
+parser.add_argument('--path', type=str, default='/home/parlange/neural-subhalo-slope-data/', help='Path to save data.')
 parser.add_argument('--load_dir', type=str, default=None, help='Directory to load model from.')
 parser.add_argument('--label', type=str, default=None, help='label of directory name') 
 parser.add_argument('--noise', type=float, help='# of seconds of noise added to images.')
@@ -206,7 +206,7 @@ if (args.data_type == 'val'):
         'min_flux_radius':10.0,
         'center_x':0,
         'center_y':0, 
-        'source_inclusion_list': pd.read_csv('/n/home02/gemzhang/llr_data/data/val_galaxies.csv',
+        'source_inclusion_list': pd.read_csv('/home/parlange/paltas/paltas/Sources/val_galaxies.csv',
                         names=['catalog_i'])['catalog_i'].to_numpy()[:70]}
 
     cc = COSMOSIncludeCatalog('planck18', source_parameters)
@@ -222,9 +222,9 @@ elif (args.data_type == 'train'):
         'center_x':0,
         'center_y':0, 
         'source_exclusion_list':np.append(
-            pd.read_csv('/n/home02/gemzhang/llr_data/data/bad_galaxies.csv',
+            pd.read_csv('/home/parlange/paltas/paltas/Sources/bad_galaxies.csv',
                         names=['catalog_i'])['catalog_i'].to_numpy(), 
-            pd.read_csv('/n/home02/gemzhang/llr_data/data/val_galaxies.csv',
+            pd.read_csv('/home/parlange/paltas/paltas/Sources/val_galaxies.csv',
                         names=['catalog_i'])['catalog_i'].to_numpy())}
 
     cc = COSMOSExcludeCatalog('planck18', source_parameters)
@@ -239,7 +239,7 @@ elif (args.data_type == 'test'):
         'min_flux_radius':10.0,
         'center_x':0,
         'center_y':0, 
-        'source_inclusion_list': pd.read_csv('/n/home02/gemzhang/llr_data/data/val_galaxies.csv',
+        'source_inclusion_list': pd.read_csv('/home/parlange/paltas/paltas/Sources/val_galaxies.csv',
                         names=['catalog_i'])['catalog_i'].to_numpy()[70:]}
 
     cc = COSMOSIncludeCatalog('planck18', source_parameters)
