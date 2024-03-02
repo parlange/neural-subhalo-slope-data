@@ -163,7 +163,7 @@ elif (args.ml_type == 'EPL'):
 nsubs = np.random.randint(args.minnsub, args.maxnsub, size=n_total)
 
 # args for fixed source 
-cosmos_folder = '/home/parlange/paltas/datasets/cosmos'
+cosmos_folder = '/home/parlange/paltas/datasets/cosmos/COSMOS_23.5_training_sample/'
 output_ab_zeropoint = 25.127 #25.9463 
 z_lens, z_source = args.z_lens, args.z_source 
 
